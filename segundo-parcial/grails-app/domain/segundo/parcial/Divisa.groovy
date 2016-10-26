@@ -5,7 +5,9 @@ class Divisa {
     String imagen
     Double valor
     Boolean convert
-
+    Boolean disponible
+    int ver
+    
     static constraints = {
     }
 }

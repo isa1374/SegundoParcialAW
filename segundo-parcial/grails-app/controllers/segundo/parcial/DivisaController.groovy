@@ -52,10 +52,19 @@ class DivisaController {
 
     @Transactional
     def update(Divisa divisa) {
-        if (divisa == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
+        def divisaG=Divisa.get(divisa.id)
+        if (divisaGuardada == null) {
+            save(alumno)
             return
+        }else{
+            def versionMaxima = Divisa.withCriteria{
+                projections{
+                    max 'ver'
+                }
+            }
+            versionMaxima+=1
+            divisaGuardada.ver=versionMaxima
+            new Divisa(imagen:divisaG.imagen,nombre:divisaG.nombre, valor:divisaG.valor,convert:divisaG.convert,version:divisaG.versionMaxima,enabled:divisaG.enabled)
         }
 
         if (divisa.hasErrors()) {
@@ -63,16 +72,7 @@ class DivisaController {
             respond divisa.errors, view:'edit'
             return
         }
-
         divisa.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'divisa.label', default: 'Divisa'), divisa.id])
-                redirect divisa
-            }
-            '*'{ respond divisa, [status: OK] }
-        }
     }
 
     @Transactional
