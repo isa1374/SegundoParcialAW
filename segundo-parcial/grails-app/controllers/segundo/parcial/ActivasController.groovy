@@ -22,7 +22,9 @@ class ActivasController {
         }list()
         
         def valor=[
-            datos: divisas1
+            base: "USD",
+            valores: divisas1,
+            resultado: []
         ]
         render valor as JSON
     }
