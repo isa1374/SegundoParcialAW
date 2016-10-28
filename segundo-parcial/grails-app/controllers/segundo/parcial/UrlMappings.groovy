@@ -10,7 +10,7 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
+        "/api/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')
     }
