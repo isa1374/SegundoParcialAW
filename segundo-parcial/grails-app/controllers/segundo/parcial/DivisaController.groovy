@@ -3,14 +3,10 @@ package segundo.parcial
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
-
 @Secured(['ROLE_ADMIN'])
 class DivisaController {
-
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+    def index() {
         respond Divisa.list(params), model:[divisaCount: Divisa.count()]
     }
 
@@ -51,21 +47,17 @@ class DivisaController {
         respond divisa
     }
 
-    @Transactional
     def update(Divisa divisa) {
-        def divisaG=Divisa.get(divisa.id)
-        if (divisaGuardada == null) {
-            save(alumno)
-            return
-        }else{
-            def versionMaxima = Divisa.withCriteria{
+        def divisaG=Divisa.get(divisa.id);
+        def versionMaxima = Divisa.withCriteria{
                 projections{
                     max 'ver'
                 }
             }
-            versionMaxima+=1
-            divisaGuardada.ver=versionMaxima
-            new Divisa(imagen:divisaG.imagen,nombre:divisaG.nombre, valor:divisaG.valor,convert:divisaG.convert,version:divisaG.versionMaxima,enabled:divisaG.enabled)
+         if (divisa == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
         }
 
         if (divisa.hasErrors()) {
@@ -73,7 +65,10 @@ class DivisaController {
             respond divisa.errors, view:'edit'
             return
         }
-        divisa.save flush:true
+       new Divisa(imagen:divisaG.imagen,nombre:divisaG.nombre, valor:divisaG.valor,convert:divisaG.convert,ver:divisaG.ver+1,disponible:divisaG.disponible).save()
+        divisaG.disponible=false;
+        divisaG.valor=divisa.valor;
+        redirect action:"index", method:"GET"
     }
 
     @Transactional

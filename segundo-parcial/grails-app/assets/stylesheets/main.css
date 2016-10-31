@@ -33,7 +33,7 @@ html * {
 }
 
 body {
-    background: #ffffff;
+    background:#D4E3AD;
     color: #333333;
     overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
     -moz-box-shadow: 0 0 0.3em #4D8618;
@@ -369,6 +369,7 @@ input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
 /* TABLES */
 
 table {
+    background:#7FAB79;
     border-top: 1px solid #DFDFDF;
     border-collapse: collapse;
     width: 100%;
@@ -395,12 +396,8 @@ td, th {
 }
 
 th {
-    background-color: #efefef;
-    background-image: -moz-linear-gradient(top, #ffffff, #eaeaea);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(1, #eaeaea));
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#ffffff', EndColorStr = '#eaeaea');
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
-    color: #666666;
+   background:#7FAB79;
+    color:#fff;
     font-weight: bold;
     line-height: 1.7em;
     padding: 0.2em 0.6em;
@@ -416,11 +413,11 @@ th a {
 }
 
 th a:link, th a:visited {
-    color: #666666;
+    color:#fff;
 }
 
 th a:hover, th a:focus {
-    color: #333333;
+   color:#fff;
 }
 
 th.sortable a {
@@ -571,4 +568,31 @@ a.skip {
 img.grails-logo {
     height:340px;
     margin-top:-10px;
+}
+body{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+input {
+    height:30px;
+    border: 0px solid;
+    border-radius:5px;
+    text-align: center;
+}
+h3 {
+    color:white;
+}
+.navbar {
+    background:#7FAB79;
+    margin-bottom: 0;
+}
+input[type=checkbox] {
+  transform: scale(1.5);
+}
+#menu_checkbox{
+    margin-top:-3%;
+    padding-top:2%;
+    padding-bottom:2%;
+    color:white;
+    background:#88AB53;
 }

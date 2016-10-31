@@ -12,11 +12,6 @@ class ActivasController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def consultar() {
-        def verStr=Divisa.withCriteria{
-                projections{
-                    max 'ver'
-                }
-            }
         def disponib=params.enabled
         def divisas1=Divisa.where{
             ver==verStr 

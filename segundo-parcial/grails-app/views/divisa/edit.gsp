@@ -27,7 +27,6 @@
             </ul>
             </g:hasErrors>
             <g:form resource="${this.divisa}" method="PUT">
-                <g:hiddenField name="version" value="${this.divisa?.version}" />
                 <fieldset class="form">
                     <f:all bean="divisa"/>
                 </fieldset>
