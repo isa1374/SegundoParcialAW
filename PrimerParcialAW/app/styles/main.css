@@ -1,0 +1,30 @@
+body{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#valor {
+    height:45px;
+    border: 0px solid;
+    border-radius:5px;
+    text-align: center;
+}
+h3 {
+    color:white;
+}
+.navbar {
+    background:#7FAB79;
+    margin-bottom: 0;
+}
+.jumbotron{
+    background: #D4E3AD;
+}
+input[type=checkbox] {
+  transform: scale(1.5);
+}
+#menu_checkbox{
+    margin-top:-3%;
+    padding-top:2%;
+    padding-bottom:2%;
+    color:white;
+    background:#88AB53;
+}

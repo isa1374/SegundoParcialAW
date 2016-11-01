@@ -1,0 +1,60 @@
+<!--
+Carla Lorena Flores Subias A01331363
+Isabel García Pérez A01331405
+
+Calculadora dinámica de monedas: Deberás realizar una página donde se pueda convertir de una moneda a otra y mostrar únicamente las monedas seleccionadas de una lista. Los valores de conversión se tomaran de un JSON (propuesto por el estudiante) donde se tendrá como base de la moneda el USD (dollar americano) y la conversión a todas las monedas. La calculadora estará hecha con bootstrap y angular. Y deberá convertir de cualquier moneda a cualquier moneda.
+-->
+<!Doctype html>
+<html ng-app="primerApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Convertidor de Divisas</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/bootstrap-select.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="scripts/angular.js"></script> 
+    <script src="scripts/app.js"></script>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/bootstrap-select.js"></script>
+      
+  </head>
+  <body ng-controller="primerAppController">
+    <nav class="navbar">
+            <h3>Convertidor de divisas</h3>
+    </nav>
+      <div class="row jumbotron">
+        <div class="col-md-4"></div>
+          <div class="col-md-4"><input type="number" id="valor" ng-model="valor" ng-change="calcular(valor,original)">
+            <select ng-model="original" ng-init="original='USD'" class="selectpicker" ng-change="calcular(valor,original)">
+            <option ng-repeat="item in conversiones.valores" data-content="<img src={{item.imagen}}>{{item.nombre}}" ng-value=item.nombre
+                    value='USD'></option>
+            </select></div>
+          <div class="col-md-4"></div>
+      </div>
+      <div class="row" id="menu_checkbox">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <label  ng-repeat="item in conversiones.valores" class="checkbox-inline"><input type="checkbox" ng-model="item.convert" ng-click="calcular(valor,original)">{{item.nombre}}</label>
+              </div>
+          </div>
+          <div class="col-md-2"></div>
+      </div>
+      <br>
+      <div ng-repeat="item in conversiones.resultado">
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-4"><div class="col-md-2"><img ng-src={{item.imagen}}></div><div class="col-md-4"><label>{{item.nombre}}</label></div>
+                  <div class="col-md-6">{{item.valor}}</div></div>
+              <div class="col-md-4"></div>
+          </div>
+          <hr>
+      </div>
+    <div class="footer">
+      <div class="container">
+      </div>
+    </div>
+          </body>
+</html>

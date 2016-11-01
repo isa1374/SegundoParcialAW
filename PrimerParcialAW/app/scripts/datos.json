@@ -1,0 +1,8 @@
+{"base":"USD",
+ "valores":[{"imagen":"./images/us.png","nombre":"USD", "valor":"1","convert":false},
+          {"imagen":"./images/m.png","nombre":"MXN", "valor":"18.83","convert":false},
+          {"imagen":"./images/c.png","nombre":"CAD", "valor":"1.3","convert":false},
+          {"imagen":"./images/j.png","nombre":"JPY", "valor":"102.87","convert":false},
+          {"imagen":"./images/uk.png","nombre":"GBP", "valor":"0.7543","convert":false},
+          {"imagen":"./images/eu.png","nombre":"EUR", "valor":"0.89","convert":false}],
+ "resultado":[]}
