@@ -4,9 +4,10 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
+@Secured(['ROLE_ADMIN'])
 class DivisaController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-    @Secured(['ROLE_ADMIN'])
+    
     def index() {
         respond Divisa.list(params), model:[divisaCount: Divisa.count()]
     }
@@ -66,9 +67,9 @@ class DivisaController {
             respond divisa.errors, view:'edit'
             return
         }
+      
        new Divisa(imagen:divisaG.imagen,nombre:divisaG.nombre, valor:divisaG.valor,convert:divisaG.convert,ver:divisaG.ver+1,disponible:divisaG.disponible).save()
-        divisaG.disponible=false;
-        divisaG.valor=divisa.valor;
+        Divisa.get(divisa.id).disponible=false;
         redirect action:"index", method:"GET"
     }
 
