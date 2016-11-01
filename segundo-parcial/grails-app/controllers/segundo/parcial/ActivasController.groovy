@@ -4,7 +4,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
-
+@Transactional(readOnly = true)
 @Secured(['ROLE_ADMIN'])
 
 class ActivasController {
@@ -14,7 +14,6 @@ class ActivasController {
     def consultar() {
         def disponib=params.enabled
         def divisas1=Divisa.where{
-            ver==verStr 
             disponible==disponib
         }list()
         

@@ -3,9 +3,10 @@ package segundo.parcial
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
-@Secured(['ROLE_ADMIN'])
+@Transactional(readOnly = true)
 class DivisaController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    @Secured(['ROLE_ADMIN'])
     def index() {
         respond Divisa.list(params), model:[divisaCount: Divisa.count()]
     }

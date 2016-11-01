@@ -4,7 +4,7 @@ class UrlMappings {
 
     static mappings = {
         "/api/"(view:"index")
-        "/"(controller:"divisa", action:"index")
+        "/" (view:"index")
         "500"(view:'/error')
         "404"(view:'/notFound')
         "/divisasActivas"(controller:"activas", action:"consultar")
